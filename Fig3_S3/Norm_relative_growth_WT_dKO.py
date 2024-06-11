@@ -52,25 +52,17 @@ for col in data1_confl:
 time = data1_confl_smoothed.index.values*1.5+index
 reset = 57#-index*1.5
     
-aver_dKo_high_dmso = data1_confl_smoothed[['A1','A2','A3']].mean(axis=1) #'A2', 'A3'
-# aver_dKo_low_dmso = data1_confl_smoothed[['B1', 'B2', 'B3']].mean(axis=1)
-aver_dKo_high_inh = data1_confl_smoothed[['A4']].mean(axis=1) #, 'A5', 'A6'
-# aver_dKo_low_inh = data1_confl_smoothed[['B4', 'B5']].mean(axis=1) #B6
+aver_dKo_high_dmso = data1_confl_smoothed[['A1','A2','A3']].mean(axis=1) 
+aver_dKo_high_inh = data1_confl_smoothed[['A4', 'A5', 'A6']].mean(axis=1) 
 
-std_dKo_high_dmso = data1_confl_smoothed[['A1', 'A2','A3']].std(axis=1) #'A2', 'A3'
-# std_dKo_low_dmso = data1_confl_smoothed[['B1', 'B2', 'B3']].std(axis=1)
-std_dKo_high_inh = data1_confl_smoothed[['A4','A5','A6']].std(axis=1) #, 'A5', 'A6'
-# std_dKo_low_inh = data1_confl_smoothed[['B4', 'B5']].std(axis=1) #B6
+std_dKo_high_dmso = data1_confl_smoothed[['A1', 'A2', 'A3']].std(axis=1) 
+std_dKo_high_inh = data1_confl_smoothed[['A4', 'A5', 'A6']].std(axis=1) 
 
 aver_3osc_high_dmso = data1_confl_smoothed[['C1', 'C2', 'C3']].mean(axis=1)
-# aver_3osc_low_dmso = data1_confl_smoothed[['D1', 'D2', 'D3']].mean(axis=1)
-aver_3osc_high_inh = data1_confl_smoothed[['C5', 'C6']].mean(axis=1) #C4
-# aver_3osc_low_inh = data1_confl_smoothed[['D4', 'D5', 'D6']].mean(axis=1)
+aver_3osc_high_inh = data1_confl_smoothed[['C4', 'C5', 'C6']].mean(axis=1) 
 
 std_3osc_high_dmso = data1_confl_smoothed[['C1', 'C2','C3']].std(axis=1) 
-# std_3osc_low_dmso = data1_confl_smoothed[['D1', 'D2', 'D3']].std(axis=1)
-std_3osc_high_inh = data1_confl_smoothed[['C5','C6']].std(axis=1) 
-# std_3osc_low_inh = data1_confl_smoothed[['D4', 'D5']].std(axis=1) 
+std_3osc_high_inh = data1_confl_smoothed[['C4', 'C5','C6']].std(axis=1) 
 
 plt.figure(figsize=(10,8))
 
