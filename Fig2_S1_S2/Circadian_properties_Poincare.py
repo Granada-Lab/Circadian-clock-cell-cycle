@@ -32,8 +32,9 @@ ll = 1
 a0 = 1
 acc = 1
 
-kappa_vect = [0, 0.0005, 0.001, 0.05]
-eps = 0.01
+kappa_vect = [0, 0.05, 0.075, 0.5]
+eps1 = 0
+eps2 = 0.01
 
 periods = pd.DataFrame()
 phase_coh = pd.DataFrame()
