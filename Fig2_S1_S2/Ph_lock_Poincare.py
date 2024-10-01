@@ -39,7 +39,8 @@ a0 = 1
 acc = 1. # works for [0.5, 1.5]
 
 kappa = 0.05 #extracellular circadian coupling
-eps = 0.01 #intracellular circadian - cell cycle #0.01 or 0.015
+eps2 = 0.01 #intracellular circadian - cell cycle #0.01 or 0.015
+eps1 = 0
 
 #Vectors initialization
 t = np.arange(0,tf,step=dt)
@@ -78,12 +79,12 @@ for i in range(len(t) - 1):
 
     for m in range(Nosc):
         middle = -gg*(np.sqrt(X[m,i]**2+Y[m,i]**2)-a0)
-        X[m,i+1] = X[m,i]+dt*(middle*X[m,i]-2*np.pi*Y[m,i]/period_circ[m]+sum_x*kappa/(2*Nosc)+pert_resset)
-        Y[m,i+1] = Y[m,i]+dt*(middle*Y[m,i]+2*np.pi*X[m,i]/period_circ[m]+sum_y*kappa/(2*Nosc))
+        X[m,i+1] = X[m,i]+dt*(middle*X[m,i]-2*np.pi*Y[m,i]/period_circ[m]+sum_x*kappa/(2*Nosc)+eps1*(XX[m,i])+pert_resset)
+        Y[m,i+1] = Y[m,i]+dt*(middle*Y[m,i]+2*np.pi*X[m,i]/period_circ[m]+sum_y*kappa/(2*Nosc)+eps2*(YY[m,i]))
         
         mid = -ll*(np.sqrt(XX[m,i]**2+YY[m,i]**2)-acc)
-        XX[m,i+1] = XX[m,i]+dt*(mid*XX[m,i]-2*np.pi*YY[m,i]/period_cell[m]+eps*(X[m,i]+XX[m,i])/2)
-        YY[m,i+1] = YY[m,i]+dt*(mid*YY[m,i]+2*np.pi*XX[m,i]/period_cell[m]+eps*(Y[m,i]+YY[m,i])/2)
+        XX[m,i+1] = XX[m,i]+dt*(mid*XX[m,i]-2*np.pi*YY[m,i]/period_cell[m]+eps2*(X[m,i])
+        YY[m,i+1] = YY[m,i]+dt*(mid*YY[m,i]+2*np.pi*XX[m,i]/period_cell[m]+eps2*(Y[m,i]))
 
     
             
