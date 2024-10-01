@@ -37,8 +37,8 @@ plt.rcParams['svg.fonttype'] = 'none'
 
 output = '.../'
 
-extra = np.arange(0, 0.041, step=0.001)
-intra = np.arange(0, 0.405, step=0.005)
+extra = np.arange(0, 1.05, step=0.05)
+intra = np.arange(0, 0.45, step=0.05)
 arn_tong = np.zeros((len(extra), len(intra)))
 det_xticks = []
 coupl_yticks = []
@@ -52,6 +52,8 @@ N = 100
 dt = 0.2
 tf = 200
 
+eps1 = 0
+
 for mm in range(len(extra)):
     coupl_yticks.append("%.3f"%extra[mm])
     for nn in range(len(intra)):
@@ -62,8 +64,8 @@ for mm in range(len(extra)):
         det_xticks.append("%.3f"%intra[nn])
         
         kappa = extra[mm]
-        eps = intra[nn]
-        print(kappa, eps)
+        eps2 = intra[nn]
+        print(kappa, eps2)
         
         t = np.arange(0, tf, step=dt)
         X = np.zeros((N, len(t)))
@@ -85,12 +87,12 @@ for mm in range(len(extra)):
 
             for m in range(N):
                 middle = -gg*(np.sqrt(X[m,i]**2+Y[m,i]**2)-a0)
-                X[m,i+1] = X[m,i]+dt*(middle*X[m,i]-2*np.pi*Y[m,i]/circ_per[m]+sum_x*kappa/(2*N))
-                Y[m,i+1] = Y[m,i]+dt*(middle*Y[m,i]+2*np.pi*X[m,i]/circ_per[m]+sum_y*kappa/(2*N))
+                X[m,i+1] = X[m,i]+dt*(middle*X[m,i]-2*np.pi*Y[m,i]/circ_per[m]+sum_x*kappa/(2*N)+eps1*(XX[m,i]))
+                Y[m,i+1] = Y[m,i]+dt*(middle*Y[m,i]+2*np.pi*X[m,i]/circ_per[m]+sum_y*kappa/(2*N)+eps1*(YY[m,i]))
                 
                 mid = -ll*(np.sqrt(XX[m,i]**2+YY[m,i]**2)-acc)
-                XX[m,i+1] = XX[m,i]+dt*(mid*XX[m,i]-2*np.pi*YY[m,i]/cell_per[m]+eps*(X[m,i]+XX[m,i])/2)
-                YY[m,i+1] = YY[m,i]+dt*(mid*YY[m,i]+2*np.pi*XX[m,i]/cell_per[m]+eps*(Y[m,i]+YY[m,i])/2)        
+                XX[m,i+1] = XX[m,i]+dt*(mid*XX[m,i]-2*np.pi*YY[m,i]/cell_per[m]+eps2*(X[m,i]))
+                YY[m,i+1] = YY[m,i]+dt*(mid*YY[m,i]+2*np.pi*XX[m,i]/cell_per[m]+eps2*(Y[m,i]))        
         
         ph_diff = pd.DataFrame(columns=np.arange(0, N, step=1))
         for m in range(N):
