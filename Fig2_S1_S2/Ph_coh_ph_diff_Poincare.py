@@ -34,11 +34,12 @@ acc = 1
 
 kappa_vect = [0, 0.05] #extracellular circadian coupling
 eps_vect = [0, 0.15] #intracellular circadian - cell cycle #0.1 or 0.15
+eps1 = 0
 
 plt.figure(figsize=(12,10))
 
 for kappa in kappa_vect:
-    for eps in eps_vect:
+    for eps2 in eps_vect:
         #Vectors initialization
         t = np.arange(0,tf,step=dt)
         X = np.zeros((Nosc,len(t)))
@@ -70,12 +71,12 @@ for kappa in kappa_vect:
             
             for m in range(Nosc):
                 middle = -gg*(np.sqrt(X[m,i]**2+Y[m,i]**2)-a0)
-                X[m,i+1] = X[m,i]+dt*(middle*X[m,i]-2*np.pi*Y[m,i]/period_circ[m]+sum_x*kappa/(2*Nosc))
-                Y[m,i+1] = Y[m,i]+dt*(middle*Y[m,i]+2*np.pi*X[m,i]/period_circ[m]+sum_y*kappa/(2*Nosc))
+                X[m,i+1] = X[m,i]+dt*(middle*X[m,i]-2*np.pi*Y[m,i]/period_circ[m]+sum_x*kappa/(2*Nosc)+eps1*(XX[m,i]))
+                Y[m,i+1] = Y[m,i]+dt*(middle*Y[m,i]+2*np.pi*X[m,i]/period_circ[m]+sum_y*kappa/(2*Nosc)+eps1*(YY[m,i]))
                 
                 mid = -ll*(np.sqrt(XX[m,i]**2+YY[m,i]**2)-acc)
-                XX[m,i+1] = XX[m,i]+dt*(mid*XX[m,i]-2*np.pi*YY[m,i]/period_cell[m]+eps*(X[m,i]+XX[m,i])/2)
-                YY[m,i+1] = YY[m,i]+dt*(mid*YY[m,i]+2*np.pi*XX[m,i]/period_cell[m]+eps*(Y[m,i]+YY[m,i])/2)
+                XX[m,i+1] = XX[m,i]+dt*(mid*XX[m,i]-2*np.pi*YY[m,i]/period_cell[m]+eps2*(X[m,i]))
+                YY[m,i+1] = YY[m,i]+dt*(mid*YY[m,i]+2*np.pi*XX[m,i]/period_cell[m]+eps2*(Y[m,i]))
         
                     
         #Phase coherence of phase differences    
