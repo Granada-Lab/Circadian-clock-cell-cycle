@@ -85,7 +85,12 @@ for i in density:
     plt.legend(loc='best')
     # plt.savefig(output+'IMT_distributions_high_density.svg')
     plt.show()
-        
+
+statistic, p_value = ks_2samp(imt_all_dose[dose[0]], imt_all_dose[dose[1]])
+print(statistic, p_value)
+
+statistic, p_value = ks_2samp(imt_all_dose[dose[0]], imt_all_dose[dose[2]])
+print(statistic, p_value)
 
 #%% Changing density
             
