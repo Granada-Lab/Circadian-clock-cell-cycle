@@ -1,2 +1,31 @@
 # Circadian-clock-cell-cycle
-Single-cell circadian oscillators exchange extracellular information to sustain coherent circadian rhythms at the tissue level. Within cells, the circadian clock and the cell cycle couple, yet the mechanisms governing this interplay remain poorly elucidated. Here, we study the role of extracellular circadian communication in the coordination between the circadian clock and the cell cycle. Using the theory of coupled oscillators combined with live population and single-cell recordings and precise experimental perturbations, we demonstrate that the loss of extracellular circadian synchronization disrupts circadian and cell cycle coordination within individual cells, impeding collective tissue growth. Coherent circadian rhythms yield oscillatory growth patterns, unveiling a global timing regulator of tissue dynamics. Knocking down core circadian elements abolishes the observed effects, highlighting the central role of circadian clock regulation. Our research underscores the significance of tissue-level circadian disruption in regulating proliferation, thereby linking disrupted circadian clocks with oncogenic processes. These findings illuminate the intricate interplay between circadian rhythms, cellular signaling, and tissue physiology, enhancing our understanding of tissue homeostasis and growth regulation in both health and disease contexts.
+
+Analysis code for:
+
+> Gutu N, Nordentoft MS, Kuhn M, Ector C, Möser M, Finger AM, Heltberg MS, Jensen MH, Keilholz U, Kramer A, Herzel H, **Granada AE**.
+> *Circadian coupling orchestrates cell growth.*
+> **Nature Physics** 2025;21:768–777. DOI: [10.1038/s41567-025-02838-4](https://doi.org/10.1038/s41567-025-02838-4)
+
+## Contents
+
+Code is organised by figure panels:
+
+| Folder | Figures |
+|---|---|
+| `Fig2_S1_S2_S3_S4_S8` | Figures 2, S1–S4, S8 |
+| `Fig3_S5_S6` | Figures 3, S5–S6 |
+| `Fig4_S5_S6_S7` | Figures 4, S5–S7 |
+
+A representative time-lapse video (`Merged_circadian_cellcycle.avi`) is included showing coupled circadian and cell-cycle dynamics in live cells.
+
+## Requirements
+
+- Python 3.8 or later
+- Standard scientific Python stack: `numpy`, `scipy`, `pandas`, `matplotlib`
+- [pyBOAT](https://github.com/tensionhead/pyBOAT) for time-frequency analysis
+
+## License
+
+MIT — see [LICENSE](LICENSE).
+This code was developed by members and collaborators of the Granada Lab research group.
+For authorship and correspondence, please refer to the publication above.
