@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the associated publication."
+title: "Circadian-clock-cell-cycle"
+repository-code: "https://github.com/Granada-Lab/Circadian-clock-cell-cycle"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Circadian coupling orchestrates cell growth"
+  journal: "Nature Physics"
+  year: 2025
+  volume: 21
+  pages: "768-777"
+  doi: "10.1038/s41567-025-02838-4"
+  authors:
+    - family-names: Gutu
+      given-names: N
+    - family-names: Nordentoft
+      given-names: MS
+    - family-names: Kuhn
+      given-names: M
+    - family-names: Ector
+      given-names: C
+    - family-names: Möser
+      given-names: M
+    - family-names: Finger
+      given-names: AM
+    - family-names: Heltberg
+      given-names: MS
+    - family-names: Jensen
+      given-names: MH
+    - family-names: Keilholz
+      given-names: U
+    - family-names: Kramer
+      given-names: A
+    - family-names: Herzel
+      given-names: H
+    - family-names: Granada
+      given-names: "Adrián E."
